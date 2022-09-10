@@ -171,7 +171,7 @@ const vm = new Vue({
 			var value1_sum = 0 //权重数==后备词数组长度 权重总和
 			this.native.forEach(function(item,index){
 				arr_value1.push(item.value1)
-				value1_sum++
+				value1_sum = value1_sum+item.value1
 				arr_value2.push(item.value2)
 			})
 			//进行数据验证
@@ -200,67 +200,3 @@ const vm = new Vue({
 		}
     }
 })
-
-// //创建实例
-// const vm = new Vue({
-//     el:'#dice',
-//     data:function(){
-//        return{
-//         keyword:'',//搜索关键词
-//         DataRole:getdata,//数据内容,数组对象,存放各种候选数据
-//         filDataRole:[],//监视属性数据变化暂存
-//         preRoleVar:false,//默认人物导航不显示
-//         fontColor:['rgb(243 177 35)','rgba(96, 213, 131, 1.0)']
-//        }
-//     },
-//     watch:{
-//         keyword:{//监视keyword值s
-//             immediate:true,
-//             handler(val){
-//                 this.filDataRole = this.DataRole.filter((p)=>{
-//                 return p.r1.indexOf(val) !== -1
-//                 })
-//             }
-//         }
-//     },
-//     computed:{//多用于属性使用
-//         midData:{//将空内容替换文字
-//             get(){
-//                 return function(result){
-//                     if(result)
-//                         return result
-//                     else return "(暂无)"
-//                 }
-//             }
-//         },
-//         hrefId:{//将id进行加工添加前缀
-//             get(){
-//                 return function(result){
-//                     result = 'role'+result
-//                     return result
-//                 }
-//             }
-//         },
-//         hrefIduse:{//将href链接进行加工
-//             get(){
-//                 return function(result){
-//                     result = '#' + 'role'+result
-//                     return result
-//                 }
-//             }
-//         },
-//         zhankORguanb(){//是否显示角色导航
-//             return this.preRoleVar?'收拢':'展开'
-//         }
-//     },
-//     methods: {//多用于方法调用
-//         showRoleVar(){//改变变量preRoleVar
-//             this.preRoleVar = !this.preRoleVar
-//         },
-//         yinyuDataShow(result){
-//             if(result === '淫域梦境' && this.user_id === 0)
-//                 return true
-//             else false
-//         },
-//     },
-// })

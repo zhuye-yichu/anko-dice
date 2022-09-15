@@ -1,0 +1,172 @@
+<!-- 
+作者常用昵称：亦初_幼竹
+bilibili:107752126
+邮箱：2760064344@qq.com
+ -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>多功能骰子娘_安科</title>
+		<link rel="stylesheet" type="text/css" href="one.css">
+		<script type="text/javascript" src="./vue2.js"></script><!-- 引入vue -->
+		<!-- <script src="https://unpkg.com/vue@3"></script> -->
+		<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+	</head>
+	<body>
+		<h1>多功能骰子娘_安科</h1>
+		<div id="vm" class="phone">
+			<p class="showtool" v-on:click="showRoleNavtool(0)"><span>{{ShowTooltext}}</span></p>
+			<div v-show="filShowTool" class="nav">
+				<ul>
+					<li v-on:click="showRoleNavtool(1)" :style="{color:(toolNumber===1)?fontColor[2]:'',background:(toolNumber===1)?bacgroundColor[0]:''}">基础</li>
+					<li v-on:click="showRoleNavtool(2)" :style="{color:(toolNumber===2)?fontColor[2]:'',background:(toolNumber===2)?bacgroundColor[0]:''}">权重</li>
+					<li v-on:click="showRoleNavtool(3)" :style="{color:(toolNumber===3)?fontColor[2]:'',background:(toolNumber===3)?bacgroundColor[0]:''}">范围限制</li>
+					<li v-on:click="showRoleNavtool(8)" :style="{color:(toolNumber===8)?fontColor[2]:'',background:(toolNumber===8)?bacgroundColor[0]:''}">(i)关于</li>
+				</ul>
+			</div>
+			<div class="dice">
+				<!-- vue标记 -->
+				<dl v-show="toolNumber===1">
+					<dt><strong>1、基础骰子娘</strong></dt>
+					<p>（满足自定义随机数的最大数，每次投的个数，以及投的次数，只能输入正整数，不宜超过数据溢出范围）</p>					
+					<table>
+						<tr>
+							<td>rd：</td>
+							<td><input type="number" name="rd1" v-model.number="rd1" value="6" min="2"></td>
+							<td class="tag">输入骰子的最大位数</td>
+						</tr>
+						<tr>
+							<td>num：</td>
+							<td><input type="number" name="num1"  v-model.number="num1" value="1" min="1"></td>
+							<td class="tag">输入每次投骰子的个数</td>
+						</tr>
+						<tr>
+							<td>fre：</td>
+							<td><input type="number" name="fre1"  v-model.number="fre1" value="1" min="1"></td>
+							<td class="tag">输入投骰子的次数</td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td>复数单次抽样结果：</td>
+							<td><label for="First1sub1">可重复<input type="radio" name="sub1" v-model="sub1" checked="checked" value="repeat" id="First1sub1" class="input-radio1"></td>
+							<td><label for="First1sub2">不重复<input type="radio" name="sub1" v-model="sub1" id="First1sub2" value="norepeat" class="input-radio1"></td>
+						</tr>
+					</table>
+					<dd class="input-button"><button v-on:click.prevent="calResultTool1()">投一下~</button></dd>
+					<dt>
+						<b>结果如下：</b>每次新结果将覆盖上一次结果
+					</dt>
+					<div class="result-box" id="result_box1">
+						<dd v-for="(item,index) in resultTool1" :key="index">{{item}}</dd>
+					</div>
+				</dl>
+				
+				<dl v-show="toolNumber===2" class="quanzhong">
+					<dt><strong>2、权重骰子娘</strong></dt>
+					<p>（可以通过附加权重影响骰子数字出现的概率，通过权重差距来决定百分比大小，最大权重不宜超过数据溢出范围;按次数投随机效果更好）</p>
+					<table border="3">
+						<tr>
+							<th class="weightValue">权重</th>
+							<td class="alternative">数字或备选词</td>
+						</tr>
+						<tr v-for='qz of native' :key='qz.id'>
+							<td class="weightValue">
+								<input type="number" v-model.number.value="qz.value1" min='1' style="text-align: center;">
+							</td>
+							<td class="alternative">
+								<input type="text" v-model.value="qz.value2">
+							</td>
+							<td>
+								<button @click='deleteNative(qz.id,qz.value2)'>删除</button>
+							</td>
+						</tr>
+					</table>
+					<div class="quanzhong_add">
+						<button @click="addNative()" style="margin-right: 50px;">+备选项</button>
+					</div>
+					<table>
+						<tr>
+							<td>num：</td>
+							<td><input type="number" name="num2"  v-model.number="num2" value="1" min="1"></td>
+							<td class="tag">输入每次投骰子的个数</td>
+						</tr>
+						<tr>
+							<td>fre：</td>
+							<td><input type="number" name="fre2"  v-model.number="fre2" value="1" min="1"></td>
+							<td class="tag">输入投骰子的次数</td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td>复数单次抽样结果：</td>
+							<td><label for="First1sub1">可重复<input type="radio" name="sub2" v-model="sub2" checked="checked" value="repeat" id="First1sub1" class="input-radio1"></td>
+							<td><label for="First1sub2">不重复<input type="radio" name="sub2" v-model="sub2" id="First1sub2" value="norepeat" class="input-radio1"></td>
+						</tr>
+					</table>
+					<dd class="input-button"><button v-on:click.prevent="calResultTool2()">投一下~</button></dd>
+					<dt>
+						<b>结果如下：</b>每次新结果将覆盖上一次结果
+					</dt>
+					<div class="result-box" id="result_box2">
+						<dd v-for="(item,index) in resultTool2" :key="index">{{item}}</dd>
+					</div>
+				</dl>
+				<dl v-show="toolNumber===3">
+					<dt><strong>3、范围限制骰子娘</strong></dt>
+					<p>(可以拟定随机数字出现的区间范围)</p>
+					<table>
+						<tr>
+							<td>min：</td>
+							<td><input type="number" v-model.number="rd3min" value=""></td>
+							<td class="tag">输入最小值</td>
+						</tr>
+						<tr>
+							<td>max：</td>
+							<td><input type="number" v-model.number="rd3max" value=""></td>
+							<td class="tag">输入最大值</td>
+						</tr>
+						<tr>
+							<td>num：</td>
+							<td><input type="number" v-model.number="num3" value="1" min="1"></td>
+							<td class="tag">输入每次投骰子的个数</td>
+						</tr>
+						<tr>
+							<td>fre：</td>
+							<td><input type="number" v-model.number="fre3" value="1" min="1"></td>
+							<td class="tag">输入投骰子的次数</td>
+						</tr>
+					</table>
+					<table>
+						<tr>
+							<td>复数单次抽样结果：</td>
+							<td><label for="First1sub1">可重复<input type="radio" name="sub3" v-model="sub3" checked="checked" value="repeat" id="First1sub1" class="input-radio1"></td>
+							<td><label for="First1sub2">不重复<input type="radio" name="sub3" v-model="sub3" id="First1sub2" value="norepeat" class="input-radio1"></td>
+						</tr>
+					</table>
+					<dd class="input-button"><button v-on:click.prevent="calResultTool3()">投一下~</button></dd>
+					<dt>
+						<b>结果如下：</b>每次新结果将覆盖上一次结果
+					</dt>
+					<div class="result-box" id="result_box3">
+						<dd v-for="(item,index) in resultTool3" :key="index">{{item}}</dd>
+					</div>
+				</dl>
+				
+				<dl v-show="toolNumber===8" style="background-color: #ffc0cb61;">
+					<h1>Touch Me</h1>
+					<table>
+						<tr v-for='arr in Touch_me' :key='arr.id'>
+							<th>{{arr.form}}：</th>
+							<td><a :href="arr.link" target="_blank">{{arr.name}}</a></td>
+						</tr>
+					</table>
+				</dl>
+			</div>
+		</div>
+	</body>
+	<!-- <script type="text/javascript" src="./data.js"></script> -->
+	<script type="text/javascript" src="./check.js"></script>
+	<script type="text/javascript" src="./one.js"></script>
+</html>

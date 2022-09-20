@@ -6,11 +6,7 @@ const vm = new Vue({
     data:function(){
         return{
 			Touch_me:[
-				//放到gitee托管时，只保留邮箱
 				{id:0,form:'QQ',name:'2760064344',link:'https://wpa.qq.com/msgrd?v=3&uin=1061401780&site=qq&menu=yes&jumpflag=1'}
-				// {id:1,form:'gitee',name:'链接',link:''},
-				// {id:2,form:'B站主页',name:'链接',link:'https://space.bilibili.com/107752126'},
-				// {id:3,form:'MEW据点',name:'链接',link:'链接：'}
 			],
 			filShowTool: false,
 			filShowTooltext: '展开功能选项>>',

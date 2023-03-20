@@ -1,0 +1,186 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    scroll-behavior: smooth;
+}
+body{
+	text-align: center;
+	background-image: url('https://pic.imgdb.cn/item/6417e83fa682492fcc5b650a.jpg');
+}
+a{
+	text-decoration:none;
+	color: pink
+}
+input,button{
+	margin-bottom: 10px;
+	padding: 5px;
+	border-radius: 12px;
+}
+button{
+	box-shadow: 3px 5px 20px rgb(0 0 0 / 50%)
+}
+button:hover{
+	background-color: skyblue;
+}
+button:active{
+	background-color: pink;
+}
+.input-button{
+	text-align: right;
+	margin-top: 20px;
+}
+dl{
+	text-align: left;
+}
+dl>p{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+table{
+}td{
+	text-align: right;
+}
+ul li{
+	cursor: pointer;
+}ul li:hover{
+	background-color: white;
+	color: #484848;
+}
+ul li:active{
+	background-color: white;
+	color: #484848;
+}
+
+.dice{
+	padding: 20px;
+}
+.tag{
+	text-align: left;
+	padding-left: 10px;
+	color: #9f9f9f;
+}
+.result-box{
+	background-color: white;
+	border-radius: 12px;
+	padding-left: 5px;
+	padding-right: 5px;
+	border-style: solid;
+	min-height: 67px;
+}
+
+table{
+	background-color: #343434;
+	color: #e3e3e3;
+	border-radius: 10px;
+	box-shadow: 3px 5px 20px rgb(0 0 0 / 50%)
+}
+table th,table td{
+	text-align: center;
+}
+.table2{
+	background-color: #ffffff;
+    color: #000000;
+	border: 2px solid black;
+	border-radius: 10px;
+	box-shadow: 3px 5px 20px rgb(0 0 0 / 50%)
+}
+.table2 th,.table2 td{
+	padding: 10px;
+	border: 1px solid #000;
+	text-align: left;
+	font-size: 50px;
+}
+table input{
+	background-color: #000000;
+	color: #d7d7d7;
+	border-radius: 0;
+	margin-bottom: 0;
+}
+.phone .alternative input{
+	width: 100%;
+}
+.quanzhong_add{
+	text-align: center;
+	margin: 20px;
+}
+/* 电脑端展示 */
+
+/* 以下是手机端展示 */
+.phone h1{
+	text-align: center;
+	font-size: 100px;
+}
+.phone .nav{
+	position: fixed;
+	width: 300px;
+	background-color: #272727;
+	border-radius: 0 30px 30px 0;
+	box-shadow: 4px 1px 12px 1px #504f4d;
+	top: 150px;
+	transition: all 1s ease-in-out;
+	overflow: hidden;
+}
+.phone .showtool{
+	display: block;
+	position: fixed;
+	top: 0;
+}
+.phone .showtool span{
+	background-color: #252525b5;
+	border-radius: 0 50px 50px 0;
+	padding: 10px;
+	cursor: pointer;
+	box-shadow: inset 0px 1px 6px rgb(255 255 255 / 96%);
+	text-shadow: 6px 3px 6px black;
+}
+.phone .nav ul,.phone .showtool{
+	color: white;
+	font-size: 55px;
+	line-height: 125px;
+	text-align: left;
+}
+.phone ul li{
+	padding-left: 20px;
+}
+.phone .dice{
+	max-width: 100%;
+	margin-top: 70px;
+}
+.phone input,.phone button{
+	height: 70px;
+	width: 200px;
+	font-size: 45px;
+}
+.phone dl>p{
+	font-size: 45px;
+}
+.phone dt,.phone dd{
+	font-size: 50px;
+}
+.phone td,.phone th{
+	font-size: 50px;
+}
+
+.phone .tag{
+	font-size: 40px;
+}
+.phone .input-radio1{
+	width: 85px;
+	height: 40px;
+}
+.phone .result-box dd{
+	font-size: 50px;
+}
+
+
+.phone .classPresent-box{
+	border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-style: solid;
+    min-height: 40px;
+}

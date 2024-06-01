@@ -175,7 +175,7 @@ qq：2760064344
     				<button v-on:click="readFile4()">读取文件</button>
 					<div class="classPresent-box">
 						<p style="font-size: 35px;">读取文件后，在该框点击名称(也就是表格的页面)添加备选页，再次点击可取消，至少要选择一个</p>
-						<span v-for="(arr,index) in sortShow4" :key="index" v-on:click="modyfySortChoose4(index)" :style="{background:arr.choose?bacgroundColor[3]:''}" style="display:inline-block;padding: 5px;margin: 10px;font-size: 30px;cursor: pointer;border-radius: 5px;box-shadow:rgb(108 108 108) 1px 1px 10px 0px inset">{{arr.sort}}</span>
+						<span v-for="(arr,index) in sortShow4" :key="index" v-on:click="modyfySortChoose4(index)" :style="{background:arr.choose?bacgroundColor[0]:''}" style="display:inline-block;padding: 5px;margin: 10px;font-size: 30px;cursor: pointer;border-radius: 5px;box-shadow:rgb(108 108 108) 1px 1px 10px 0px inset">{{arr.sort}}</span>
 					</div>
 
 					<table>

@@ -6,14 +6,14 @@ const vm = new Vue({
     data:function(){
         return{
 			// Touch_me:[
-			// 	{id:0,form:'QQ',name:'2760064344',link:'https://wpa.qq.com/msgrd?v=3&uin=1061401780&site=qq&menu=yes&jumpflag=1'}
+			// 	{id:0,form:'QQ',name:'',link:''},
 			// 	{id:0,form:'bilibili',name:'竹叶梦_亦初',link:'https://space.bilibili.com/107752126'}
 			// ],
-			filShowTool: false,
-			filShowTooltext: '展开功能选项>>',
+			filShowTool: true,
+			filShowTooltext: '展开功能选项',
 			toolNumber: 1 ,//工具的序号
-			fontColor:['white','black','#484848','#ffcece'],
-			bacgroundColor:['white','black','#484848','#ffcece'],
+			fontColor:['white','black','rgb(225 225 225)','#ffcece'],
+			bacgroundColor:['white','black','#3f3f3f','#ffcece'],
 			
 			//tool1
 			rd1: 6,
@@ -56,13 +56,14 @@ const vm = new Vue({
     },
     computed:{
 		ShowTooltext(){//如何显示工具栏展开提示
-			return this.filShowTool?'折叠功能选项<<':'展开功能选项>>'
+			return this.filShowTool?'折叠功能选项':'展开功能选项'
 	    }
     },
     methods: {
         showRoleNavtool(number){//改变filShowTool
             if(number)
 				this.toolNumber = number
+			else
 			this.filShowTool = !this.filShowTool
         },
 		//工具1

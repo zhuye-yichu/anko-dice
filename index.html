@@ -1,7 +1,5 @@
 <!-- 
-作者常用昵称：竹叶梦_亦初
 bilibili:https://space.bilibili.com/107752126
-qq：2760064344
  -->
 <!DOCTYPE html>
 <html>
@@ -10,8 +8,8 @@ qq：2760064344
 		<title>多功能骰子娘_安科</title>
 		<link rel="stylesheet" type="text/css" href="one.css">
 		<!-- 引入vue -->
-		<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
-		<!-- <script src="js/vue2.js"></script> -->
+		<!-- <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script> -->
+		<script src="js/vue.min.js"></script>
 
 		<!-- 可以读取表格的项目：
 		https://git.sheetjs.com/SheetJS/sheetjs
@@ -27,46 +25,55 @@ qq：2760064344
 	</head>
 	<body>
 		<h1>多功能骰子娘_安科</h1>
-		<div id="vm" class="phone">
-			<p class="showtool" v-on:click="showRoleNavtool(0)"><span>{{ShowTooltext}}</span></p>
-			<div v-show="filShowTool" class="nav">
-				<ul>
-					<li v-on:click="showRoleNavtool(1)" :style="{color:(toolNumber===1)?fontColor[2]:'',background:(toolNumber===1)?bacgroundColor[0]:''}">基础</li>
-					<li v-on:click="showRoleNavtool(2)" :style="{color:(toolNumber===2)?fontColor[2]:'',background:(toolNumber===2)?bacgroundColor[0]:''}">权重</li>
-					<li v-on:click="showRoleNavtool(3)" :style="{color:(toolNumber===3)?fontColor[2]:'',background:(toolNumber===3)?bacgroundColor[0]:''}">范围限制</li>
-					<li v-on:click="showRoleNavtool(4)" :style="{color:(toolNumber===4)?fontColor[2]:'',background:(toolNumber===4)?bacgroundColor[0]:''}">从库随机</li>
-					<!-- <li v-on:click="showRoleNavtool(8)" :style="{color:(toolNumber===8)?fontColor[2]:'',background:(toolNumber===8)?bacgroundColor[0]:''}">(i)关于</li> -->
-				</ul>
-			</div>
+		<div id="vm">
+			<nav>
+				<p class="showtool" v-on:click="showRoleNavtool(0)">{{ShowTooltext}}</p>
+				<div v-show="filShowTool">
+					<ul>
+						<li v-on:click="showRoleNavtool(1)" :style="{color:(toolNumber===1)?fontColor[2]:'',background:(toolNumber===1)?bacgroundColor[2]:''}">基础</li>
+						<li v-on:click="showRoleNavtool(2)" :style="{color:(toolNumber===2)?fontColor[2]:'',background:(toolNumber===2)?bacgroundColor[2]:''}">权重</li>
+						<li v-on:click="showRoleNavtool(3)" :style="{color:(toolNumber===3)?fontColor[2]:'',background:(toolNumber===3)?bacgroundColor[2]:''}">范围限制</li>
+						<li v-on:click="showRoleNavtool(4)" :style="{color:(toolNumber===4)?fontColor[2]:'',background:(toolNumber===4)?bacgroundColor[2]:''}">从库随机</li>
+						<!-- <li v-on:click="showRoleNavtool(8)" :style="{color:(toolNumber===8)?fontColor[2]:'',background:(toolNumber===8)?bacgroundColor[2]:''}">(i)关于</li> -->
+					</ul>
+				</div>
+			</nav>
+			
 			<div class="dice">
 				<!-- vue标记 -->
 				<dl v-show="toolNumber===1">
 					<dt><strong>1、基础骰子娘</strong></dt>
 					<p>（满足自定义随机数的最大数，每次投的个数，以及投的次数，只能输入正整数）</p>					
-					<table>
-						<tr>
-							<td>rd：</td>
-							<td><input type="number" name="rd1" v-model.number="rd1" value="6" min="2"></td>
-							<td class="tag">输入骰子的最大位数</td>
-						</tr>
-						<tr>
-							<td>num：</td>
-							<td><input type="number" name="num1"  v-model.number="num1" value="1" min="1"></td>
-							<td class="tag">输入每次投骰子的个数</td>
-						</tr>
-						<tr>
-							<td>fre：</td>
-							<td><input type="number" name="fre1"  v-model.number="fre1" value="1" min="1"></td>
-							<td class="tag">输入投骰子的次数</td>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td>复数单次抽样结果：</td>
-							<td><label for="First1Sub">可重复<input type="radio" name="sub1" v-model="sub1" checked="checked" value="repeat" id="First1Sub" class="input-radio1"></td>
-							<td><label for="First1sub">不重复<input type="radio" name="sub1" v-model="sub1" id="First1sub" value="norepeat" class="input-radio1"></td>
-						</tr>
-					</table>
+					<div class="table">
+						<table>
+							<tr>
+								<td>rd：</td>
+								<td><input type="number" name="rd1" v-model.number="rd1" value="6" min="2"></td>
+								<td class="tag">输入骰子的最大位数</td>
+							</tr>
+							<tr>
+								<td>num：</td>
+								<td><input type="number" name="num1"  v-model.number="num1" value="1" min="1"></td>
+								<td class="tag">输入每次投骰子的个数</td>
+							</tr>
+							<tr>
+								<td>fre：</td>
+								<td><input type="number" name="fre1"  v-model.number="fre1" value="1" min="1"></td>
+								<td class="tag">输入投骰子的次数</td>
+							</tr>
+						</table>
+					</div>
+					<div class="bar-small"></div>
+					<div class="table">
+						<table>
+							<tr>
+								<td>复数单次抽样结果：</td>
+								<td><label for="First1Sub">可重复<input type="radio" name="sub1" v-model="sub1" checked="checked" value="repeat" id="First1Sub" class="input-radio1"></td>
+								<td><label for="First1sub">不重复<input type="radio" name="sub1" v-model="sub1" id="First1sub" value="norepeat" class="input-radio1"></td>
+							</tr>
+						</table>
+					</div>
+					
 					<dd class="input-button"><button v-on:click.prevent="calResultTool1()">投一下~</button></dd>
 					<dt>
 						<b>结果如下：</b>每次新结果将覆盖上一次结果
@@ -79,45 +86,53 @@ qq：2760064344
 				<dl v-show="toolNumber===2" class="quanzhong">
 					<dt><strong>2、权重骰子娘</strong></dt>
 					<p>（可以通过附加权重影响骰子数字出现的概率）</p>
-					<table border="3">
-						<tr>
-							<th class="weightValue">权重</th>
-							<th class="alternative">数字或备选词</th>
-						</tr>
-						<tr v-for='qz of native' :key='qz.id'>
-							<td class="weightValue">
-								<input type="number" v-model.number.value="qz.value1" min='1' style="text-align: center;">
-							</td>
-							<td class="alternative">
-								<input type="text" v-model.value="qz.value2">
-							</td>
-							<td>
-								<button @click='deleteNative(qz.id,qz.value2)'>删除</button>
-							</td>
-						</tr>
-					</table>
+					<div class="table">
+						<table>
+							<tr>
+								<th class="weightValue">权重</th>
+								<th class="alternative" style="width: 66%;">数字或备选词</th>
+							</tr>
+							<tr v-for='qz of native' :key='qz.id'>
+								<td class="weightValue">
+									<input type="number" v-model.number.value="qz.value1" min='1' style="text-align: center;">
+								</td>
+								<td class="alternative">
+									<input type="text" v-model.value="qz.value2" style="width: 100%;">
+								</td>
+								<td>
+									<span @click='deleteNative(qz.id,qz.value2)' style="cursor: pointer;">删除</span>
+								</td>
+							</tr>
+						</table>
+					</div>
 					<div class="quanzhong_add">
 						<button @click="addNative()" style="margin-right: 50px;">+备选项</button>
 					</div>
-					<table>
-						<tr>
-							<td>num：</td>
-							<td><input type="number" name="num2"  v-model.number="num2" value="1" min="1"></td>
-							<td class="tag">输入每次投骰子的个数</td>
-						</tr>
-						<tr>
-							<td>fre：</td>
-							<td><input type="number" name="fre2"  v-model.number="fre2" value="1" min="1"></td>
-							<td class="tag">输入投骰子的次数</td>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td>复数单次抽样结果：</td>
-							<td><label for="First2Sub">可重复<input type="radio" name="sub2" v-model="sub2" checked="checked" value="repeat" id="First2Sub" class="input-radio1"></td>
-							<td><label for="First2sub">不重复<input type="radio" name="sub2" v-model="sub2" id="First2sub" value="norepeat" class="input-radio1"></td>
-						</tr>
-					</table>
+					<div class="table">
+						<table>
+							<tr>
+								<td>num：</td>
+								<td><input type="number" name="num2"  v-model.number="num2" value="1" min="1"></td>
+								<td class="tag">输入每次投骰子的个数</td>
+							</tr>
+							<tr>
+								<td>fre：</td>
+								<td><input type="number" name="fre2"  v-model.number="fre2" value="1" min="1"></td>
+								<td class="tag">输入投骰子的次数</td>
+							</tr>
+						</table>
+					</div>
+					<div class="bar-small"></div>
+					<div class="table">
+						<table>
+							<tr>
+								<td>复数单次抽样结果：</td>
+								<td><label for="First2Sub">可重复<input type="radio" name="sub2" v-model="sub2" checked="checked" value="repeat" id="First2Sub" class="input-radio1"></td>
+								<td><label for="First2sub">不重复<input type="radio" name="sub2" v-model="sub2" id="First2sub" value="norepeat" class="input-radio1"></td>
+							</tr>
+						</table>
+					</div>
+					
 					<dd class="input-button"><button v-on:click.prevent="calResultTool2()">投一下~</button></dd>
 					<dt>
 						<b>结果如下：</b>每次新结果将覆盖上一次结果
@@ -129,35 +144,41 @@ qq：2760064344
 				<dl v-show="toolNumber===3">
 					<dt><strong>3、范围限制骰子娘</strong></dt>
 					<p>(可以拟定随机数字出现的区间范围)</p>
-					<table>
-						<tr>
-							<td>min：</td>
-							<td><input type="number" v-model.number="rd3min" value=""></td>
-							<td class="tag">输入最小值</td>
-						</tr>
-						<tr>
-							<td>max：</td>
-							<td><input type="number" v-model.number="rd3max" value=""></td>
-							<td class="tag">输入最大值</td>
-						</tr>
-						<tr>
-							<td>num：</td>
-							<td><input type="number" v-model.number="num3" value="1" min="1"></td>
-							<td class="tag">输入每次投骰子的个数</td>
-						</tr>
-						<tr>
-							<td>fre：</td>
-							<td><input type="number" v-model.number="fre3" value="1" min="1"></td>
-							<td class="tag">输入投骰子的次数</td>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td>复数单次抽样结果：</td>
-							<td><label for="First3Sub">可重复<input type="radio" name="sub3" v-model="sub3" checked="checked" value="repeat" id="First3Sub" class="input-radio1"></td>
-							<td><label for="First3sub">不重复<input type="radio" name="sub3" v-model="sub3" id="First3sub" value="norepeat" class="input-radio1"></td>
-						</tr>
-					</table>
+					<div class="table">
+						<table>
+							<tr>
+								<td>min：</td>
+								<td><input type="number" v-model.number="rd3min" value=""></td>
+								<td class="tag">输入最小值</td>
+							</tr>
+							<tr>
+								<td>max：</td>
+								<td><input type="number" v-model.number="rd3max" value=""></td>
+								<td class="tag">输入最大值</td>
+							</tr>
+							<tr>
+								<td>num：</td>
+								<td><input type="number" v-model.number="num3" value="1" min="1"></td>
+								<td class="tag">输入每次投骰子的个数</td>
+							</tr>
+							<tr>
+								<td>fre：</td>
+								<td><input type="number" v-model.number="fre3" value="1" min="1"></td>
+								<td class="tag">输入投骰子的次数</td>
+							</tr>
+						</table>
+					</div>
+					<div class="bar-small"></div>
+					<div class="table">
+						<table>
+							<tr>
+								<td>复数单次抽样结果：</td>
+								<td><label for="First3Sub">可重复<input type="radio" name="sub3" v-model="sub3" checked="checked" value="repeat" id="First3Sub" class="input-radio1"></td>
+								<td><label for="First3sub">不重复<input type="radio" name="sub3" v-model="sub3" id="First3sub" value="norepeat" class="input-radio1"></td>
+							</tr>
+						</table>
+					</div>
+					<div class="bar-small"></div>
 					<dd class="input-button"><button v-on:click.prevent="calResultTool3()">投一下~</button></dd>
 					<dt>
 						<b>结果如下：</b>每次新结果将覆盖上一次结果
@@ -167,41 +188,48 @@ qq：2760064344
 					</div>
 				</dl>
 				<dl v-show="toolNumber===4">
-					<dt><strong>4、从库里随机</strong></dt>
+					<dt><strong>4、从表格库随机</strong><a href="./模版data.xlsx">[获取模版文件]</a></dt>
 					<p>1、选择随机的数量大于等于库的数量时，全部输出，小于时随机输出</p>
-					<p>2、读取excel表格，表格的内容格式可参考同目录下的模板表格</p>
+					<p>2、流程为【选择文件(表格)->读取文件->选择列表项...】</p>
 					<p>3、表格里的weight权重不存在或小于0时不纳入随机范围</p>
-					<input type="file" id="fileInput" style="width: 500px;">
-    				<button v-on:click="readFile4()">读取文件</button>
-					<div class="classPresent-box">
-						<p style="font-size: 35px;">读取文件后，在该框点击名称(也就是表格的页面)添加备选页，再次点击可取消，至少要选择一个</p>
-						<span v-for="(arr,index) in sortShow4" :key="index" v-on:click="modyfySortChoose4(index)" :style="{background:arr.choose?bacgroundColor[0]:''}" style="display:inline-block;padding: 5px;margin: 10px;font-size: 30px;cursor: pointer;border-radius: 5px;box-shadow:rgb(108 108 108) 1px 1px 10px 0px inset">{{arr.sort}}</span>
+					<div class="table" style="color: #afafaf;;">
+						<input type="file" id="fileInput" style="width: 500px;">
+						<button v-on:click="readFile4()">读取文件</button>
+						<div class="classPresent-box">
+							<p>读取文件成功后，再点击出现的列表名称(对应表格的栏目)添加随机备选项。再次点击可取消，至少要选择一个。</p>
+							<span v-for="(arr,index) in sortShow4" :key="index" v-on:click="modyfySortChoose4(index)" :style="{background:arr.choose?bacgroundColor[0]:''}" style="display:inline-block;padding: 5px;margin: 10px;font-size: 30px;cursor: pointer;border-radius: 5px;box-shadow:rgb(108 108 108) 1px 1px 10px 0px inset">{{arr.sort}}</span>
+						</div>
 					</div>
-
-					<table>
-						<tr>
-							<td>num：</td>
-							<td><input type="number" v-model.number="num4" value="1" min="1"></td>
-							<td class="tag">输入每次投骰子的个数</td>
-						</tr>
-						<tr>
-							<td>fre：</td>
-							<td><input type="number" v-model.number="fre4" value="1" min="1"></td>
-							<td class="tag">输入投骰子的次数</td>
-						</tr>
-						<tr>
-							<td>tag：</td>
-							<td><input type="text" v-model="tag4" value=""></td>
-							<td class="tag">以tag筛选时填上，目前只支持一个tag</td>
-						</tr>
-					</table>
-					<table>
-						<tr>
-							<td>单次抽样是否重复：</td>
-							<td><label for="First4Sub">可重复<input type="radio" name="sub4" v-model="sub4" checked="checked" value="repeat" id="First4Sub" class="input-radio1"></td>
-							<td><label for="First4sub">不重复<input type="radio" name="sub4" v-model="sub4" id="First4sub" value="norepeat" class="input-radio1"></td>
-						</tr>
-					</table>
+					<div class="bar-small"></div>
+					<div class="table">
+						<table>
+							<tr>
+								<td>num：</td>
+								<td><input type="number" v-model.number="num4" value="1" min="1"></td>
+								<td class="tag">输入每次投骰子的个数</td>
+							</tr>
+							<tr>
+								<td>fre：</td>
+								<td><input type="number" v-model.number="fre4" value="1" min="1"></td>
+								<td class="tag">输入投骰子的次数</td>
+							</tr>
+							<tr>
+								<td>tag：</td>
+								<td><input type="text" v-model="tag4" value=""></td>
+								<td class="tag">以tag筛选时填上，目前只支持一对多匹配</td>
+							</tr>
+						</table>
+					</div>
+					<div class="bar-small"></div>
+					<div class="table">
+						<table>
+							<tr>
+								<td>单次抽样是否重复：</td>
+								<td><label for="First4Sub">可重复<input type="radio" name="sub4" v-model="sub4" checked="checked" value="repeat" id="First4Sub" class="input-radio1"></td>
+								<td><label for="First4sub">不重复<input type="radio" name="sub4" v-model="sub4" id="First4sub" value="norepeat" class="input-radio1"></td>
+							</tr>
+						</table>
+					</div>
 					<dd class="input-button"><button v-on:click.prevent="calResultTool4()">投一下~</button></dd>
 					<dt>
 						<b>结果如下：</b>每次新结果将覆盖上一次结果

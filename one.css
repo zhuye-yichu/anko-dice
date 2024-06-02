@@ -6,23 +6,35 @@
     scroll-behavior: smooth;
 }
 body{
-	text-align: center;
+	height: 100vh;
 	background-image: url('https://pic.imgdb.cn/item/6417e83fa682492fcc5b650a.jpg');
 }
 a{
 	text-decoration:none;
 	color: pink
 }
-input,button{
+h1{
+	text-align: center;
+}
+ul,ol,li{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+input{
 	margin-bottom: 10px;
 	padding: 5px;
 	border-radius: 12px;
 }
 button{
-	box-shadow: 3px 5px 20px rgb(0 0 0 / 50%)
+	margin-bottom: 10px;
+	padding: 5px;
+	border-radius: 8px;
+	box-shadow: inset 1px 1px 2px rgb(51 51 51 / 50%)
 }
 button:hover{
-	background-color: skyblue;
+	background-color: rgb(173, 220, 238);
+	box-shadow: inset 1px 1px 5px rgba(222, 222, 222, 0.893)
 }
 button:active{
 	background-color: pink;
@@ -44,19 +56,39 @@ table{
 }
 ul li{
 	cursor: pointer;
+    padding: 5px;
+    border-radius: 8px;
 }ul li:hover{
-	background-color: white;
-	color: #484848;
-}
-ul li:active{
-	background-color: white;
-	color: #484848;
+	background-color: rgb(153, 246, 215);
 }
 
+/* 导航 begin */
+nav{
+	position: fixed;
+    left: 0;
+    top: 150px;
+    padding: 7px;
+    border-radius: 0 7px 7px 0;
+    box-shadow: 2px 1px 9px 3px darkgray;
+}
+nav>div{
+	font-size: 25px;
+}
+nav>p{
+	margin: 7px;
+    cursor: pointer;
+}
+
+/* 导航 end */
+
+
 .dice{
+	width: 75%;
 	padding: 20px;
+	font-size: 20px;
 }
 .tag{
+	font-size: small;
 	text-align: left;
 	padding-left: 10px;
 	color: #9f9f9f;
@@ -69,12 +101,16 @@ ul li:active{
 	border-style: solid;
 	min-height: 67px;
 }
-
-table{
+.table{
 	background-color: #343434;
-	color: #e3e3e3;
+	padding: 10px;
 	border-radius: 10px;
-	box-shadow: 3px 5px 20px rgb(0 0 0 / 50%)
+	box-shadow: 1px 1px 7px 1px rgb(0 0 0 / 50%);
+	
+}
+table{
+    color: #e3e3e3;
+	border-spacing: 13px;
 }
 table th,table td{
 	text-align: center;
@@ -83,17 +119,17 @@ table th,table td{
 	background-color: #ffffff;
     color: #000000;
 	border: 2px solid black;
-	border-radius: 10px;
-	box-shadow: 3px 5px 20px rgb(0 0 0 / 50%)
+	/* border-radius: 10px; */
+	box-shadow: 3px 5px 20px rgb(0 0 0 / 50%);
+	border-spacing: 0px;
 }
 .table2 th,.table2 td{
 	padding: 10px;
 	border: 1px solid #000;
 	text-align: left;
-	font-size: 50px;
 }
 table input{
-	background-color: #000000;
+	background-color: #494949;
 	color: #d7d7d7;
 	border-radius: 0;
 	margin-bottom: 0;
@@ -105,10 +141,32 @@ table input{
 	text-align: center;
 	margin: 20px;
 }
-/* 电脑端展示 */
 
-/* 以下是手机端展示 */
-.phone h1{
+
+/* 功能性盒子 begin */
+.bar-small{
+	width: 100%;
+	height: 25px;
+}
+.bar-nomral{
+	width: 100%;
+	height: 50px;
+}
+.bar-big{
+	width: 100%;
+	height: 70px;
+}
+/* 功能性盒子 end */
+
+/* 手机端适应 */
+@media screen and (max-width: 960px){
+	
+
+
+}
+  
+
+/* .phone h1{
 	text-align: center;
 	font-size: 100px;
 }
@@ -183,4 +241,4 @@ table input{
     padding-right: 5px;
     border-style: solid;
     min-height: 40px;
-}
+} */

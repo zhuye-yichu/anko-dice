@@ -192,8 +192,10 @@ table input{
 	.weightValue input{
 		width: 85px;;
 
+	}.alternative {
+		width: 59%;
 	}.sanchu{
-		margin-left: 20px;
+		margin-left: 15px;
 		font-size: medium;
 	}
 	.classPresent-box p{

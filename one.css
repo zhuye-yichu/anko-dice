@@ -70,6 +70,7 @@ nav{
     padding: 7px;
     border-radius: 0 7px 7px 0;
     box-shadow: 2px 1px 9px 3px darkgray;
+	background-color: white;
 }
 nav>div{
 	font-size: 25px;

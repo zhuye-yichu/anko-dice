@@ -6,6 +6,7 @@ bilibili:https://space.bilibili.com/107752126
 	<head>
 		<meta charset="utf-8">
 		<title>多功能骰子娘_安科</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" type="text/css" href="one.css">
 		<!-- 引入vue -->
 		<!-- <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script> -->
@@ -90,7 +91,7 @@ bilibili:https://space.bilibili.com/107752126
 						<table>
 							<tr>
 								<th class="weightValue">权重</th>
-								<th class="alternative" style="width: 66%;">数字或备选词</th>
+								<th class="alternative">数字或备选词</th>
 							</tr>
 							<tr v-for='qz of native' :key='qz.id'>
 								<td class="weightValue">
@@ -100,7 +101,7 @@ bilibili:https://space.bilibili.com/107752126
 									<input type="text" v-model.value="qz.value2" style="width: 100%;">
 								</td>
 								<td>
-									<span @click='deleteNative(qz.id,qz.value2)' style="cursor: pointer;">删除</span>
+									<span @click='deleteNative(qz.id,qz.value2)' class="sanchu" style="cursor: pointer;">删除</span>
 								</td>
 							</tr>
 						</table>
@@ -188,16 +189,16 @@ bilibili:https://space.bilibili.com/107752126
 					</div>
 				</dl>
 				<dl v-show="toolNumber===4">
-					<dt><strong>4、从表格库随机</strong><a href="./模版data.xlsx" style="
+					<dt><strong>4、从表格库随机</strong></dt><a href="./模版data.xlsx" style="
 						padding: 3px;
 						background: #3b3b3b;
 						border-radius: 7px;
-					">[点击获取模版文件]</a></dt>
+					">[点击获取模版文件]</a>
 					<p>1、选择随机的数量大于等于库的数量时，全部输出，小于时随机输出</p>
 					<p>2、流程为【选择文件(表格)->读取文件->选择列表项...】</p>
 					<p>3、表格里的weight权重不存在或小于0时不纳入随机范围</p>
 					<div class="table" style="color: #afafaf;;">
-						<input type="file" id="fileInput" style="width: 500px;">
+						<input type="file" id="fileInput" style="width: 50%;">
 						<button v-on:click="readFile4()">读取文件</button>
 						<div class="classPresent-box">
 							<p>读取文件成功后，再点击出现的列表名称(对应表格的栏目)添加随机备选项。再次点击可取消，至少要选择一个。</p>

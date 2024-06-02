@@ -147,6 +147,25 @@ table input{
 }
 
 
+.classPresent-box span{
+	display:inline-block;
+	padding: 5px;
+	margin: 10px;
+	font-size: 30px;
+	cursor: pointer;
+	border-radius: 5px;
+	box-shadow:rgb(108 108 108) 1px 1px 10px 0px inset
+}
+#result_box4>div{
+	margin-top: 25px;
+}
+#result_box4 b{
+	font-size: 20px;
+}
+.table2 th,.table2 td{
+	font-size: 15px;
+}
+
 /* 功能性盒子 begin */
 .bar-small{
 	width: 100%;
@@ -200,6 +219,10 @@ table input{
 	}
 	.classPresent-box p{
 		font-size: small;
+	}
+	.classPresent-box span{
+		margin: 7px;
+		font-size: 20px;
 	}
 
 }

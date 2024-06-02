@@ -123,21 +123,21 @@ var myClass = {
 		// alert(fre + ','+num+','+rd)
 		let arr =new Array()
 		for (let i=0;i<fre;i++){
-			arr[i] = 'Fre' + (i+1) + 'Rd' + num + '：' + this.parnum(num,rd,sub)
+			arr[i] = 'F' + (i+1) + 'N' + num + 'R'+ rd + '：' + this.parnum(num,rd,sub)
 		}
 		return arr
 	},
 	parfre2:function(fre,num,sub,arr_value,value_sum){//多次抽样列表
 		let arr =new Array()
 		for (let i=0;i<fre;i++){
-			arr[i] = 'Fre' + (i+1) + 'Rd' + num + '：' + this.parnum_qz(num,sub,arr_value,value_sum,2)
+			arr[i] = 'F' + (i+1) + 'N' + num + '：' + this.parnum_qz(num,sub,arr_value,value_sum,2)
 		}
 		return arr
 	},
 	parfre3:function(tool,min,max,num,fre,sub){
 		let arr =new Array()
 		for (let i=0;i<fre;i++){
-			arr[i] = 'Fre' + (i+1) + 'Rd' + num + '：' + this.parnum_fw(min,max,num,sub)
+			arr[i] = 'F' + (i+1) + 'N' + num + '['+min+','+ max  +']' + '：' + this.parnum_fw(min,max,num,sub)
 		}
 		return arr
 	},

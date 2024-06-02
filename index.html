@@ -202,7 +202,7 @@ bilibili:https://space.bilibili.com/107752126
 						<button v-on:click="readFile4()">读取文件</button>
 						<div class="classPresent-box">
 							<p>读取文件成功后，再点击出现的列表名称(对应表格的栏目)添加随机备选项。再次点击可取消，至少要选择一个。</p>
-							<span v-for="(arr,index) in sortShow4" :key="index" v-on:click="modyfySortChoose4(index)" :style="{background:arr.choose?bacgroundColor[0]:''}" style="display:inline-block;padding: 5px;margin: 10px;font-size: 30px;cursor: pointer;border-radius: 5px;box-shadow:rgb(108 108 108) 1px 1px 10px 0px inset">{{arr.sort}}</span>
+							<span v-for="(arr,index) in sortShow4" :key="index" v-on:click="modyfySortChoose4(index)" :style="{background:arr.choose?bacgroundColor[0]:''}">{{arr.sort}}</span>
 						</div>
 					</div>
 					<div class="bar-small"></div>
@@ -241,19 +241,19 @@ bilibili:https://space.bilibili.com/107752126
 					</dt>
 					<div class="result-box" id="result_box4">
 						<div v-for="arr in resultTool4" >
-							<b style="font-size: 30px;">Fre{{arr.Fre}}：{{arr.back}}</b>
+							<b>Fre{{arr.Fre}}：{{arr.back}}</b>
 							<table class="table2">
 							<tr>
-								<th style="font-size: 25px;">name</th>
-								<th style="font-size: 25px;">weight</th>
-								<th style="font-size: 25px;">tag</th>
-								<th style="font-size: 25px;">details</th>
+								<th>name</th>
+								<th>weight</th>
+								<th>tag</th>
+								<th>details</th>
 							</tr>
 							<tr v-for="arr in arr.result">
-								<td style="font-size: 25px;">{{arr.name}}</td>
-								<td style="font-size: 25px;">{{arr.weight}}</td>
-								<td style="font-size: 25px;">{{arr.tag}}</td>
-								<td style="font-size: 25px;">{{arr.details}}</td>
+								<td>{{arr.name}}</td>
+								<td>{{arr.weight}}</td>
+								<td>{{arr.tag}}</td>
+								<td>{{arr.details}}</td>
 							</tr>
 							</table>
 						</div>

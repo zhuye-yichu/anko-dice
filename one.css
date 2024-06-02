@@ -169,7 +169,7 @@ table input{
 	}
 	h1{
 		text-align: left;
-		/* font-size: small; */
+		font-size: 1.5rem;
 		padding: 7px;
 	}
 	.dice {
@@ -190,12 +190,12 @@ table input{
 		border-spacing: 1px;
 	}
 	.weightValue input{
-		width: 85px;;
+		width: 75px;;
 
 	}.alternative {
 		width: 59%;
 	}.sanchu{
-		margin-left: 15px;
+		margin-left: 5px;
 		font-size: medium;
 	}
 	.classPresent-box p{
